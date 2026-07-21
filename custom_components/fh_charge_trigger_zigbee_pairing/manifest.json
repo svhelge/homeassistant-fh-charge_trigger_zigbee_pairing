@@ -4,8 +4,8 @@
   "codeowners": ["@svhelge"],
   "config_flow": false,
   "dependencies": ["bluetooth"],
-  "documentation": "https://github.com/svhelge/fh_charge_trigger_zigbee_pairing",
-  "issue_tracker": "https://github.com/svhelge/fh_charge_trigger_zigbee_pairing/issues",
+  "documentation": "https://github.com/svhelge/homeassistant-fh-charge_trigger_zigbee_pairing",
+  "issue_tracker": "https://github.com/svhelge/homeassistant-fh-charge_trigger_zigbee_pairing/issues",
   "iot_class": "local_push",
   "requirements": ["bleak-retry-connector>=3.5.0", "bleak"],
   "version": "1.1.1"
