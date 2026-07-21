@@ -10,7 +10,7 @@ from bleak_retry_connector import establish_connection, BleakClientWithServiceCa
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = "charge_trigger_pairing"
+DOMAIN = "fh_charge_trigger_zigbee_pairing"
 TARGET_NAME = "Futurehome Charge"
 
 # Target Characteristics
