@@ -1,0 +1,14 @@
+{
+  "title": "FH Charge Trigger Zigbee Pairing",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Futurehome Charge pairing trigger",
+        "description": "Optionally supply a default device MAC address to use when triggering pairing from the UI or automations.",
+        "data": {
+          "device_mac": "Device MAC address (optional)"
+        }
+      }
+    }
+  }
+}

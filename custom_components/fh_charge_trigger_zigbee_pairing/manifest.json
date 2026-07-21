@@ -2,11 +2,11 @@
   "domain": "fh_charge_trigger_zigbee_pairing",
   "name": "FH Charge Trigger Zigbee Pairing",
   "codeowners": ["@svhelge"],
-  "config_flow": false,
+  "config_flow": true,
   "dependencies": ["bluetooth"],
   "documentation": "https://github.com/svhelge/homeassistant-fh-charge_trigger_zigbee_pairing",
   "issue_tracker": "https://github.com/svhelge/homeassistant-fh-charge_trigger_zigbee_pairing/issues",
   "iot_class": "local_push",
   "requirements": ["bleak-retry-connector>=3.5.0", "bleak"],
-  "version": "0.9.1"
+  "version": "0.9.2"
 }
