@@ -1,6 +1,6 @@
 {
   "domain": "fh_charge_trigger_zigbee_pairing",
-  "name": "FH Charge Trigger Zigbee Pairing",
+  "name": "Futurehome Charge - Trigger Zigbee Pairing",
   "codeowners": ["@svhelge"],
   "config_flow": true,
   "dependencies": ["bluetooth"],
