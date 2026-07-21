@@ -1,16 +1,23 @@
 scan:
   name: Scan for Charger
-  description: Inspects ambient Bluetooth discovery states for 'Futurehome Charge' signals.
+  description: Inspects ambient Bluetooth discovery states for 'Futurehome Charge' signals. Optionally persists the found device MAC into the integration options when save is true.
   supports_response: only
+  fields:
+    save:
+      name: Save discovered MAC
+      description: If true and a device is found, the discovered device_mac will be saved into this integration's options and used as a default for trigger calls without device_mac.
+      required: false
+      selector:
+        boolean: {}
 
 trigger:
   name: Trigger Pairing
-  description: Opens an active link with the given hardware address to cycle pairing scripts.
+  description: Opens an active link with the given hardware address to cycle pairing scripts. If device_mac is omitted, the integration will use the saved device_mac from its options (if present).
   fields:
     device_mac:
       name: Device MAC Address
-      description: The hardware target identifier returned dynamically via scanning routines.
-      required: true
-      example: "XX:XX:XX:XX:XX:XX"
+      description: The hardware target identifier returned dynamically via scanning routines. If omitted, the saved device_mac option will be used if available.
+      required: false
+      example: "AA:BB:CC:DD:EE:FF"
       selector:
-        text:
+        text: {}
