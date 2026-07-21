@@ -1,17 +1,19 @@
 # Futurehome Charge - Trigger Zigbee Pairing
-**Futurehome Charge - Trigger Zigbee Pairing** is a lightweight Home Assistant custom integration designed to trigger Zigbee pairing mode on the Futurehome Charge EV charger over Bluetooth Low Energy (BLE).
+**Futurehome Charge - Trigger Zigbee Pairing**
+
+is a lightweight Home Assistant custom integration designed to trigger Zigbee pairing mode on the Futurehome Charge EV charger over Bluetooth Low Energy (BLE).
 
 By interfacing directly with Home Assistant’s native Bluetooth stack, this integration can automatically scan ambient BLE advertisements, confirm the presence of your Futurehome Charge, and dispatch a short GATT sequence to open the charger's Zigbee pairing window.
 
 This module requires that the `bluetooth` integration is configured in Home Assistant.
 
-The module adds two services:
+The module adds two actions (Developer Tools → Actions):
 
 #### 1. `fh_charge_trigger_zigbee_pairing.scan`
 Scans for visible Futurehome Charge BLE advertisements and returns response data for automations.
 Returns: `found` (boolean), `device_mac` (string), `rssi` (integer).
 
-Optional: pass `{ "save": true }` to persist the discovered `device_mac` into this integration's config entry options so it can be used as a default for the trigger service.
+Optional: pass `{ "save": true }` to persist the discovered `device_mac` into this integration's config entry options so it can be used as a default for the trigger action.
 
 #### 2. `fh_charge_trigger_zigbee_pairing.trigger`
 Connects to the specified MAC address and executes the GATT sequence to open Zigbee pairing.
@@ -34,9 +36,9 @@ There are two supported installation methods: via HACS (recommended) or manual i
 
    - Select **Category:** `Integration`.
    - Click **Add**.
-5. After adding, open HACS → Integrations, find **FH Charge Trigger Zigbee Pairing** and click **Install**.
+5. After adding, open HACS → Integrations, find **Futurehome Charge - Trigger Zigbee Pairing** and click **Install**.
 6. Restart Home Assistant if prompted by HACS.
-7. Add the integration in Home Assistant: Settings → Devices & Services → **Add Integration** → search for **FH Charge Trigger Zigbee Pairing** and follow the UI flow.
+7. Add the integration in Home Assistant: Settings → Devices & Services → **Add Integration** → search for **Futurehome Charge - Trigger Zigbee Pairing** and follow the UI flow.
 
 HACS will allow easier updates and visibility in the HACS UI when new releases are published.
 
@@ -57,19 +59,19 @@ HACS will allow easier updates and visibility in the HACS UI when new releases a
    Or download the repository ZIP from GitHub and copy the `custom_components/fh_charge_trigger_zigbee_pairing` directory into your Home Assistant `custom_components` folder.
 
 3. Restart Home Assistant.
-4. Add the integration in Home Assistant: Settings → Devices & Services → **Add Integration** → search for **FH Charge Trigger Zigbee Pairing** and follow the UI flow.
+4. Add the integration in Home Assistant: Settings → Devices & Services → **Add Integration** → search for **Futurehome Charge - Trigger Zigbee Pairing** and follow the UI flow.
 
 
 ## Usage
 
-- Use Developer Tools → Services to call the `fh_charge_trigger_zigbee_pairing.scan` service. If your charger advertises, the service returns `found`, `device_mac`, and `rssi`.
-  - To save the discovered MAC as the integration default (so `trigger` may use it later without passing `device_mac`), call the scan service with `{ "save": true }` while the device is visible.
+- Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.scan` action. If your charger advertises, the action returns `found`, `device_mac`, and `rssi`.
+  - To save the discovered MAC as the integration default (so `trigger` may use it later without passing `device_mac`), call the scan action with `{ "save": true }` while the device is visible.
 
-- Use Developer Tools → Services to call the `fh_charge_trigger_zigbee_pairing.trigger` service and pass the `device_mac` to trigger Zigbee pairing, or omit `device_mac` to use the saved option.
+- Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.trigger` action and pass the `device_mac` to trigger Zigbee pairing, or omit `device_mac` to use the saved option.
 
 
 ## Notes
-- This integration performs BLE writes to the device; ensure you trust the device and that only authorized users have access to service calls.
+- This integration performs BLE writes to the device; ensure you trust the device and that only authorized users have access to actions.
 - The integration normalizes and validates MAC addresses before saving or using them.
 - If you want the integration to remember a device without using the scan+save flow, an Options flow may be added later to edit the saved MAC.
 
