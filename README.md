@@ -63,17 +63,17 @@ HACS will allow easier updates and visibility in the HACS UI when new releases a
 
 
 ## Usage
-
-- Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.scan` action. If your charger advertises, the action returns `found`, `device_mac`, and `rssi`.
+### Scan for devices
+Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.scan` action. If your charger advertises, the action returns `found`, `device_mac`, and `rssi`.
   - To save the discovered MAC as the integration default (so `trigger` may use it later without passing `device_mac`), call the scan action with `{ "save": true }` while the device is visible.
 
-- Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.trigger` action and pass the `device_mac` to trigger Zigbee pairing, or omit `device_mac` to use the saved option.
+### Trigger pairing mode
+Use Developer Tools → Actions to call the `fh_charge_trigger_zigbee_pairing.trigger` action. Pass the `device_mac` parameter to initiate Zigbee pairing for a specific charger, or omit `device_mac` to use the previously saved value. Once triggered, the charger will enter Zigbee pairing mode and can join a Zigbee network. Pairing must then be initiated from a Zigbee gateway, such as Zigbee2MQTT, ZHA, or a similar Zigbee coordinator.
 
 
 ## Notes
 - This integration performs BLE writes to the device; ensure you trust the device and that only authorized users have access to actions.
 - The integration normalizes and validates MAC addresses before saving or using them.
-- If you want the integration to remember a device without using the scan+save flow, an Options flow may be added later to edit the saved MAC.
 
 
 ## Troubleshooting
