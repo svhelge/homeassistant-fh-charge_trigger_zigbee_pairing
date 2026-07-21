@@ -1,0 +1,16 @@
+scan:
+  name: Scan for Charger
+  description: Inspects ambient Bluetooth discovery states for 'Futurehome Charge' signals.
+  supports_response: only
+
+trigger:
+  name: Trigger Pairing
+  description: Opens an active link with the given hardware address to cycle pairing scripts.
+  fields:
+    device_mac:
+      name: Device MAC Address
+      description: The hardware target identifier returned dynamically via scanning routines.
+      required: true
+      example: "XX:XX:XX:XX:XX:XX"
+      selector:
+        text:
