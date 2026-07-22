@@ -20,7 +20,7 @@ class FHChargeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Get the options flow for this handler."""
         from .options_flow import OptionsFlowHandler
 
-        return OptionsFlowHandler(config_entry)
+        return OptionsFlowHandler()
 
     async def async_step_user(self, user_input: dict | None = None):
         if user_input is not None:
