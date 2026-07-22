@@ -1,14 +1,26 @@
 {
-  "title": "FH Charge Trigger Zigbee Pairing",
+  "title": "Futurehome Charge - Trigger Zigbee Pairing",
   "config": {
     "step": {
       "user": {
         "title": "Configure Futurehome Charge pairing trigger",
-        "description": "Optionally supply a default device MAC address to use when triggering pairing from the UI or automations.",
+        "description": "Add the integration to enable scan and trigger actions. No data is required at creation.",
+        "data": {}
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Integration options",
+        "description": "Set or remove the saved device MAC used by the trigger action.",
         "data": {
           "device_mac": "Device MAC address (optional)"
         }
       }
     }
+  },
+  "error": {
+    "invalid_mac": "Invalid MAC address format"
   }
 }
