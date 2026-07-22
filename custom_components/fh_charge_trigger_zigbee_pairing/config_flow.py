@@ -4,10 +4,9 @@ from __future__ import annotations
 
 import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.core import HomeAssistant
+from homeassistant.core import callback
 
 from .const import DOMAIN, DEFAULT_TARGET_NAME, CONF_DEVICE_MAC
-from .options_flow import OptionsFlowHandler
 
 
 class FHChargeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -15,19 +14,18 @@ class FHChargeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry):
+        """Get the options flow for this handler."""
+        from .options_flow import OptionsFlowHandler
+
+        return OptionsFlowHandler(config_entry)
+
     async def async_step_user(self, user_input: dict | None = None):
         if user_input is not None:
-            return self.async_create_entry(title=DEFAULT_TARGET_NAME, data=user_input)
+            # Create entry without saving user input (keep config entries empty by default)
+            return self.async_create_entry(title=DEFAULT_TARGET_NAME, data={})
 
         data_schema = vol.Schema({vol.Optional(CONF_DEVICE_MAC, default=""): str})
         return self.async_show_form(step_id="user", data_schema=data_schema)
-
-
-def async_get_options_flow(config_entry):
-    """Return the options flow handler for a config entry.
-
-    This advertises that the integration supports Options in the UI so the
-    "Options" button will appear for each config entry.
-    """
-    from .options_flow import OptionsFlowHandler
-    return OptionsFlowHandler(config_entry)
