@@ -29,9 +29,6 @@ def _is_valid_mac(mac: str) -> bool:
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Handle options for the FH Charge Trigger Zigbee Pairing integration."""
 
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
-        self.config_entry = config_entry
-
     async def async_step_init(self, user_input: dict[str, Any] | None = None):
         """Manage the options for the config entry."""
         if user_input is not None:
