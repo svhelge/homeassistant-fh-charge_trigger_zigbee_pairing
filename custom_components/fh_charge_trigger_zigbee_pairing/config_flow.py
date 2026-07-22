@@ -7,6 +7,7 @@ from homeassistant import config_entries
 from homeassistant.core import HomeAssistant
 
 from .const import DOMAIN, DEFAULT_TARGET_NAME, CONF_DEVICE_MAC
+from .options_flow import OptionsFlowHandler
 
 
 class FHChargeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -20,3 +21,12 @@ class FHChargeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         data_schema = vol.Schema({vol.Optional(CONF_DEVICE_MAC, default=""): str})
         return self.async_show_form(step_id="user", data_schema=data_schema)
+
+
+def async_get_options_flow(config_entry):
+    """Return the options flow handler for a config entry.
+
+    This advertises that the integration supports Options in the UI so the
+    "Options" button will appear for each config entry.
+    """
+    return OptionsFlowHandler(config_entry)
