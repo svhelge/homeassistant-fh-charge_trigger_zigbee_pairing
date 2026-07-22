@@ -29,4 +29,5 @@ def async_get_options_flow(config_entry):
     This advertises that the integration supports Options in the UI so the
     "Options" button will appear for each config entry.
     """
+    from .options_flow import OptionsFlowHandler
     return OptionsFlowHandler(config_entry)
